@@ -1,4 +1,4 @@
-import {_decorator, Component, Label, Node} from 'cc';
+import {_decorator, Component, Label, Node, Animation} from 'cc';
 
 const {ccclass, property} = _decorator;
 
@@ -91,7 +91,8 @@ export class Game extends Component {
         }
 
         // 播放敌人受击动画
-        //TODO
+        let ani = this.enemyAreaNode.getComponent(Animation);
+        ani.play('hurt');
 
         this.enemyHp -= this.playerAtk;
 
@@ -158,7 +159,7 @@ export class Game extends Component {
     }
 
     nextRoom() {
-        console.log('进入下一个房间') ;
+        console.log('进入下一个房间');
         this.initEnemy();
         this.turnNum = 0;
         this.updatePlayerAp(this.playerMaxAp);
